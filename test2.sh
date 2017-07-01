@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo "foobar $1" > /tmp/foobar
+echo "foobar $1" > /tmp/anbada/foobar

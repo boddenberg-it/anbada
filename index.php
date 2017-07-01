@@ -19,7 +19,7 @@ $sec = "10"
 
 	<form action="<?php shell_exec('/var/www/html/anbada.sh'); ?>"><input type="submit" value="backup"></form>
 
-	<div><p><?php include('/tmp/myFile.txt'); ?></p></div>
+	<div><p><?php include('/tmp/anbada/myFile.txt'); ?></p></div>
 
 	<div><p><?php echo $client ?></p></div>
         <div><p>Uffda</p></div>

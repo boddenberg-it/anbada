@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo "$(sudo adb devices)" > /tmp/myFile.txt
+echo "$(sudo adb devices)" > /tmp/anbada/myFile.txt
