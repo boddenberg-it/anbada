@@ -1,5 +1,5 @@
 #!/bin/sh
 
-echo "[$(date)] anbada.sh $@" >> /var/www/html/logs/latest.log
-
-echo "$(sudo adb devices)" > /tmp/anbada/myFile.txt
+#if [ "$1" = "refresh" ]; then
+	echo "$(sudo adb devices)" > /tmp/anbada/myFile.txt
+#fi
