@@ -1,21 +1,23 @@
 <html>
     <head>
 	<title>anbada</title>
-	<!-- to let the LED blink :) -->
-	 <meta http-equiv="refresh" content="10; URL=http://anbada/">
+	<meta http-equiv="refresh" content="10; URL=http://anbada/">
 	<?php shell_exec("/var/www/html/anbada.sh foo refresh") ?>
     </head>
     <body>
-
-	<br><h2><b>AN</b>droid <b>BA</b>ckup <b>DA</b>emon</h2><br>
-
-	<div><p><?php include("/tmp/anbada/myFile.txt"); ?></p></div>
-
-	<form action="backup.php" method="post">
-		<input type=checkbox name="Photos" checked="false"></input>
-		<br>
-		<input type=button value="submit" onclick="submit();"></inpu>
+	<h2>
+		<b>AN</b>droid <b>BA</b>ckup <b>DA</b>emon
+	</h2>
+	<form action="anbada.php" method="post">
+		<?php include("/tmp/anbada/devices"); ?>
+		<p>folder:</p>
+		<label><input type="checkbox" name="DCIM (photos & videos)"</input>photos?</label><br>
+		<label><input type="checkbox" name="Download (downloads)"</input>downloads?</label><br>
+		<p></p>
+		<label><input type="checkbox" name="apps"</input>apps?</label><br>
+		<label><input type="checkbox" name="contacts"</input>contacts?</label><br>
+		<p></p>
+		<input type="button" value="backup" onclick="submit();"></input>
 	</form>
-
     <body>
 </html>
