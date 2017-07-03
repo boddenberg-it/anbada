@@ -1,14 +1,13 @@
 <html>
     <head>
 	<title>anbada</title>
+	<!-- to let the LED blink :) -->
+	 <meta http-equiv="refresh" content="10; URL=http://anbada/">
+	<?php shell_exec("/var/www/html/anbada.sh foo refresh") ?>
     </head>
     <body>
 
 	<br><h2><b>AN</b>droid <b>BA</b>ckup <b>DA</b>emon</h2><br>
-
-	<form action="refresh.php" method="post">
-		<input type=button value="refresh" onclick="submit()"></input>
-	</form>
 
 	<div><p><?php include("/tmp/anbada/myFile.txt"); ?></p></div>
 
