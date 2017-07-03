@@ -1,23 +1,19 @@
-<?php
-$page = $_SERVER['PHP_SELF'];
-$client = $_SERVER['REMOTE_ADDR'];
-$sec = "10"
-?>
-
+<?php $client = $_SERVER['REMOTE_ADDR']; ?>
 <html>
     <title>anbada</title>
     <head>
-    <meta http-equiv="refresh" content="<?php echo $sec?>;URL='<?php echo $page?>'">
+<!--    <meta http-equiv="refresh" content="10"> -->
     </head>
     <body>
 
 	<br><h2><b>AN</b>droid <b>BA</b>ckup <b>DA</b>emon</h2><br>
 
 	<input type=checkbox name="DCIM folder"
-		checked="true"
-		onClick="<?php shell_exec('/var/www/html/test2.sh uffda') ?>">
+		checked="false"
+		onClick="<?php shell_exec("/var/www/html/anbada.sh $client checkbox_photos") ?>"
+	</input>
 
-	<form action="<?php shell_exec('/var/www/html/anbada.sh'); ?>"><input type="submit" value="backup"></form>
+	<form action="<?php shell_exec("/var/www/html/anbada.sh $client backup"); ?>"><input type="submit" value="backup"></form>
 
 	<div><p><?php include('/tmp/anbada/myFile.txt'); ?></p></div>
 
