@@ -1,7 +1,7 @@
 <html>
     <head>
 	<title>anbada</title>
-	<meta http-equiv="refresh" content="10; URL=http://anbada/">
+	<meta http-equiv="refresh" content="10; URL="<?php $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>"">
 	<?php shell_exec("/var/www/html/anbada.sh foo refresh") ?>
     </head>
     <body>
@@ -9,6 +9,7 @@
 		<b>AN</b>droid <b>BA</b>ckup <b>DA</b>emon
 	</h2>
 	<form action="anbada.php" method="post">
+		<p>connected devices:<p>
 		<?php include("/tmp/anbada/devices"); ?>
 		<p>folder:</p>
 		<label><input type="checkbox" name="DCIM (photos & videos)"</input>photos?</label><br>
