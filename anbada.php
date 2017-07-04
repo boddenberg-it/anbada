@@ -10,5 +10,5 @@ function redirect($url){
 
 $client = $_SERVER['REMOTE_ADDR'];
 shell_exec("/var/www/html/anbada.sh $client yeaaaah fefjeofeo");
-redirect("http://anbada/");
+redirect("https://anbada/");
 ?>

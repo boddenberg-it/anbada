@@ -27,13 +27,13 @@ if [ "$1" = "refresh" ]; then
 		counter=$((counter+1))
 	done
 
-#	while [ $counter -gt -1 ]; do
-#		echo $counter
-#		echo "<input type=\"radio\" name=\"device\" style=\"$states[$counter]\" value=\"$serial[$counter]\"><label>$serial[$counter]</label><br>" >> /tmp/anbada/devices
-#		counter=$((counter-1))
-#	done
+	while [ $counter -gt -1 ]; do
+		echo $counter
+		echo "<input type=\"radio\" name=\"device\" style=\"$states[$counter]\" value=\"$serial[$counter]\"><label>$serial[$counter]</label><br>" >> /tmp/anbada/devices
+		counter=$((counter-1))
+	done
 
 	echo "$serials[0]"
 	echo "$states[0]"
-	echo 
+	echo
 fi
