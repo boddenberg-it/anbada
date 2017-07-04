@@ -17,7 +17,7 @@ if [ "$1" = "refresh" ]; then
 		echo "$counter: $device"
 		if [ $((counter %2)) -eq 0 ]; then
 			echo "even $counter $device"
-			serials[$counter]="$device"
+			serials[$((counter/2))]="$device"
 		else
 			echo "odd $counter $device"
 			position=$((counter/2))
@@ -26,14 +26,21 @@ if [ "$1" = "refresh" ]; then
 		fi
 		counter=$((counter+1))
 	done
+	echo $counter
+	counter=$(($((counter/2))-1))
+	echo $counter
+
+	if [ $counter -eq -1 ]; then
+		echo "<p><b>Please connect a device!</b></p>" > /tmp/anbada/devices
+		exit 0
+	fi
 
 	while [ $counter -gt -1 ]; do
-		echo $counter
-		echo "<input type=\"radio\" name=\"device\" style=\"$states[$counter]\" value=\"$serial[$counter]\"><label>$serial[$counter]</label><br>" >> /tmp/anbada/devices
+		echo "yeah"
+		serial="${serials[$counter]}"
+		state="${states[$counter]}"
+		echo "$counter $serial $state"
+		echo "<input type=\"radio\" name=\"device\" style=\"$state\" value=\"$serial\"><label>$serial</label><br>" >> /tmp/anbada/devices
 		counter=$((counter-1))
 	done
-
-	echo "$serials[0]"
-	echo "$states[0]"
-	echo
 fi

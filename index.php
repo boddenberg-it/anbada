@@ -11,6 +11,7 @@
 	<form action="anbada.php" method="post">
 		<p>connected devices:<p>
 		<?php include("/tmp/anbada/devices"); ?>
+		<br>
 		<p>folder:</p>
 		<label><input type="checkbox" name="DCIM (photos & videos)"</input>photos?</label><br>
 		<label><input type="checkbox" name="Download (downloads)"</input>downloads?</label><br>
