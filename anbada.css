@@ -1,0 +1,14 @@
+body {
+	background-color: black;
+	color: white;
+	text-align: center;
+	font-size: 180%;
+	font-family: "Courier New";
+	padding: 2%;
+}
+
+
+.button {
+	width: 15%;
+	height: 10%;
+}
