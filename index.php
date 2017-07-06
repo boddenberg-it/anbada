@@ -7,17 +7,28 @@
     </head>
 
     <body>
-	<h2><u>An</u>droid <u>Ba</u>ckup <u>Da</u>emon</h2>
 
-	<p>lan:<?php include("/tmp/anbada/lan")?></p>
-	<p>wlan:<?php include("/tmp/anbada/wlan")?></p>
+	<h2><u>An</u>droid <u>Ba</u>ckup <u>Da</u>emon</h2>
+	<p>lan:<?php include("/tmp/anbada/lan")?>wlan:<?php include("/tmp/anbada/wlan")?></p>
+	<nav>
+ 	<div class="wrapper">
+           <ul id="header">
+               <li><a href="">backup</a></li>
+               <li><a href="restore.php">restore</a></li>
+               <li><a href="wlan.php">wlan</a></li>
+               <li><a href="help.html">help</a></li>
+           </ul>
+      	</div>
+	</nav>
+
 
 	<form action="anbada.php" method="post">
 		<p>connected device(s):<p>
 		<?php include("/tmp/anbada/devices"); ?>
 		<br>
 		<label><input type="checkbox" name="apps"</input>apps?</label><br>
-		<label><input type="checkbox" name="internal_storage"</input>internal storage?</label><br>
+		<label><input type="checkbox" name="storage"</input>storage?</label><br>
+		<label><input type="checkbox" name="system_apps"</input>system apps?</label><br>
 		<br>
 		<input type="submit" class="button" name="action" value="backup"></input>
 		<br>

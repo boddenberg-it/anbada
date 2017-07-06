@@ -10,18 +10,30 @@ function redirect($url){
     	}
 }
 
+// getting form information
 $client = $_SERVER['REMOTE_ADDR'];
-
 $action = $_POST['action'];
+$device = $_POST['device'];
+$apps = $_POST['apps'];
+$storage = $_POST['storage'];
+$system_apps = $_POST['system_apps'];
+$ssid = $_POST['ssid'];
+$password = $_POST['password'];
+//$file = $_POST['file'];
 
-	$apps = $_POST['apps'];
-	$internal_storage = $_POST['internal_storage'];
-	shell_exec("/var/www/ssl/secure/anbada.sh $client $action $apps $internal_storage");
+// ensuring that shell functions only gets necessary information
+switch($action) {
+	case ("backup"):
+	shell_exec("/var/www/ssl/secure/anbada.sh $client $action $device apps:$apps storage:$storage system_apps:$system_apps");
+  	break;
 
-echo "/var/www/ssl/secure/anbada.sh $client $action $apps $internal_storage";
-echo '<pre>';
-echo htmlspecialchars(print_r($_POST, true));
-echo '</pre>';
+	case ("add_ssid"):
+	shell_exec("/var/www/ssl/secure/anbada.sh $client $action $ssid $password");
+	break;
 
-//redirect("https://anbada/");
+	case ("restore"):
+//	shell_exec("/var/www/ssl/secure/anbada.sh $client $action $device $file");
+	break;
+}
+redirect("https://anbada/");
 ?>

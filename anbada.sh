@@ -1,11 +1,27 @@
 #!/bin/bash
+# anbada.sh functions for submit buttons in index.php holds.
+# For each of such buttons a functions must be declared.
+# Otherwise error message in anbada.log you will find.
 
-client_ip="$1"
-shift
+function backup() {
+	serial="$1"
+	flags=""
 
-echo "$(date): $client_ip $@" >> anbada.log
+	if [ "$2" = "apps:on" ]; then
+		flags="-apk"
+	fi
+	if [ "$3" = "storage:on" ]; then
+		flags="${flags} -shared"
+	fi
+	if [ "$4" = "system_apps:on" ]; then
+		flags="${flags} -system"
+	fi
 
-if [ "$1" = "refresh" ]; then
+	mkdir -p "/var/www/html/backups_of/$serial/"
+	adb -s "$serial" wait-for-device backup -f "/var/www/html/backups_of/$serial/$serial-$(date)" $flags
+}
+
+function refresh() {
 	rm /tmp/anbada/devices || true
 	touch /tmp/anbada/devices
 
@@ -32,11 +48,21 @@ if [ "$1" = "refresh" ]; then
 	fi
 
 	while [ $counter -gt -1 ]; do
-		echo "yeah"
 		serial="${serials[$counter]}"
 		state="${states[$counter]}"
-		echo "$counter $serial $state"
-		echo "<input type=\"radio\" name=\"device\" style=\"$state\" value=\"$serial\"><label>$serial</label><br>" >> /tmp/anbada/devices
 		counter=$((counter-1))
 	done
+}
+
+# log every invokation with IP
+echo "[$(date)] client_ip:$@" >> anbada.log
+shift
+
+# function name must match name of submit button
+if [ type -d "$1" ]; then
+	echo "[ERROR] no function registered for action: $1" >> anbada.log
+else
+	cmd="$1"; shift; cmd $@
 fi
+
+
