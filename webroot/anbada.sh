@@ -21,6 +21,11 @@ function backup() {
 	adb -s "$serial" wait-for-device backup -f "/var/www/html/backups_of/$serial/$serial-$(date)" $flags
 }
 
+function add_ssid() {
+	# omit the clear text password
+	wpa_passphrase "$1" "$2" | sed '0~3d' >> /etc/wpa_supplicant/wpa_supplicant.conf
+}
+
 function refresh() {
 	rm /tmp/anbada/devices || true
 	touch /tmp/anbada/devices
@@ -64,5 +69,3 @@ if [ type -d "$1" ]; then
 else
 	cmd="$1"; shift; cmd $@
 fi
-
-

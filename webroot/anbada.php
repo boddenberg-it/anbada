@@ -24,15 +24,15 @@ $password = $_POST['password'];
 // ensuring that shell functions only gets necessary information
 switch($action) {
 	case ("backup"):
-	shell_exec("/var/www/ssl/secure/anbada.sh $client $action $device apps:$apps storage:$storage system_apps:$system_apps");
+	shell_exec("/var/www/ssl/anbada.sh $client $action $device apps:$apps storage:$storage system_apps:$system_apps");
   	break;
 
 	case ("add_ssid"):
-	shell_exec("/var/www/ssl/secure/anbada.sh $client $action $ssid $password");
+	shell_exec("/var/www/ssl/anbada.sh $client $action $ssid $password");
 	break;
 
 	case ("restore"):
-//	shell_exec("/var/www/ssl/secure/anbada.sh $client $action $device $file");
+//	shell_exec("/var/www/ssl/anbada.sh $client $action $device $file");
 	break;
 }
 redirect("https://anbada/");
