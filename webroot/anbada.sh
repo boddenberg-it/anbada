@@ -1,4 +1,5 @@
 #!/bin/bash
+#
 # anbada.sh functions for submit buttons in index.php holds.
 # For each of such buttons a functions must be declared.
 # Otherwise error message in anbada.log you will find.
@@ -19,6 +20,15 @@ function backup() {
 
 	mkdir -p "/var/www/html/backups_of/$serial/"
 	adb -s "$serial" wait-for-device backup -f "/var/www/html/backups_of/$serial/$serial-$(date)" $flags
+}
+
+function restore() {
+	exit 0
+}
+
+function sync() {
+	mkdir oooohjjee
+	exit 0
 }
 
 function add_ssid() {
@@ -59,13 +69,7 @@ function refresh() {
 	done
 }
 
-# log every invokation with IP
-echo "[$(date)] client_ip:$@" >> anbada.log
+# log every invokation with date and IP
+echo "[$(date)] $@" >> anbada.log
 shift
-
-# function name must match name of submit button
-if [ type -d "$1" ]; then
-	echo "[ERROR] no function registered for action: $1" >> anbada.log
-else
-	cmd="$1"; shift; cmd $@
-fi
+$@
