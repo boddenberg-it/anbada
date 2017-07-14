@@ -56,7 +56,7 @@
 
           <div class="starter-template">
 
-	<p>aweosme documentation</p>
+	<p>awesome settings</p>
 
 
   </div>
