@@ -56,15 +56,29 @@
 
           <div class="starter-template">
 
-	<form action="anbada.php" method="post">
-		<p>connected device(s):<p>
-		<?php include("/tmp/anbada/devices"); ?>
-		<br>
-		<label><input type="checkbox" name="apps"</input>apps?</label><br>
-		<label><input type="checkbox" name="storage"</input>storage?</label><br>
-		<label><input type="checkbox" name="system_apps"</input>system apps?</label><br>
-		<br>
-		<input type="submit" class="button" name="action" value="backup"></input>
-	</form>
-    <body>
+  <form action="anbada.php" method="post">
+    <p>connected device(s):<p>
+    <?php include("/tmp/anbada/devices"); ?>
+    <br>
+    <label><input type="checkbox" name="apps"</input> apps?
+    </label><br>
+    <label><input type="checkbox" name="storage"</input> storage?
+    </label><br>
+    <label><input type="checkbox" name="system_apps"</input> system apps?
+    </label><br>
+    <br>
+    <input type="submit" class="button" name="action" value="backup"></input>
+  </form>
+
+</div>
+</div><!-- /.container -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+<script src="js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+</body>
 </html>
