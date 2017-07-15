@@ -66,6 +66,7 @@ function refresh() {
 		serial="${serials[$counter]}"
 		state="${states[$counter]}"
 		counter=$((counter-1))
+		echo "<input type=\"radio\" name=\"device\" class=\"$state\" value=\"$serial\" /> $serial" >> /tmp/anbada/devices
 	done
 }
 
