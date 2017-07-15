@@ -38,7 +38,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-              <a class="navbar-brand active" href="#">Anbada</a>
+              <a class="navbar-brand active" href="index.php">Anbada</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
@@ -56,19 +56,7 @@
 
           <div class="starter-template">
 
-  <form action="anbada.php" method="post">
-    <p>connected device(s):<p>
-    <?php include("/tmp/anbada/devices"); ?>
-    <br>
-    <label><input type="checkbox" name="apps"</input> apps?
-    </label><br>
-    <label><input type="checkbox" name="storage"</input> storage?
-    </label><br>
-    <label><input type="checkbox" name="system_apps"</input> system apps?
-    </label><br>
-    <br>
-    <input type="submit" class="button" name="action" value="backup"></input>
-  </form>
+            <p>Welcone to Anbada</p>
 
 </div>
 </div><!-- /.container -->

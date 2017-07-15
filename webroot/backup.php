@@ -38,11 +38,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-              <a class="navbar-brand active" href="#">Anbada</a>
+              <a class="navbar-brand active" href="index.php">Anbada</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
-                <li><a href="backup.php">backup</a></li>
+                <li class="active"><a href="backup.php">backup</a></li>
                 <li><a href="restore.php">restore</a></li>
                 <li><a href="sync.php">sync</a></li>
                 <li><a href="settings.php">settings</a></li>
