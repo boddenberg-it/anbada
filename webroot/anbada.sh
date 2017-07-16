@@ -32,14 +32,17 @@ function sync() {
 	sudo mkdir -p "$device_storage"
 	dirs=""
 
-	if [ "$2" = "all:yes" ]; then
+	if [ "$2" = "all" ]; then
 		dirs=$(sudo adb -s "$serial" wait-for-device ls /sdcard | cut -d ' ' -f4 | tail -n +3)
-	elif [ "$3" = "simples:yes" ]; then
-		dirs="DCIM Documents Download" 
+	elif [ "$2" = "simple" ]; then
+		dirs="DCIM Documents Download"
+	else
+		echo "error sync nothing passed" > anbada.log
+		exit 1
 	fi
 
 	for dir in $dirs; do
-		sudo adb-sync --reverse "/sdcard/$dir" "$device_storage"
+		sudo adb-sync -s "$serial" --reverse "/sdcard/$dir" "$device_storage"
 	done
 }
 
@@ -85,4 +88,4 @@ function refresh() {
 # log every invokation with date and IP
 echo "[$(date)] $@" >> anbada.log
 shift
-$@
+$@ &

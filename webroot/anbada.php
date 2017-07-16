@@ -19,6 +19,7 @@ $storage = $_POST['storage'];
 $system_apps = $_POST['system_apps'];
 $ssid = $_POST['ssid'];
 $password = $_POST['password'];
+$sort_of_backup = $_POST['sort_of_backup'];
 //$file = $_POST['file'];
 
 // ensuring that shell functions only gets necessary information
@@ -34,6 +35,9 @@ switch($action) {
 	case ("restore"):
 //	shell_exec("/var/www/ssl/anbada.sh $client $action $device $file");
 	break;
+
+	case ("sync"):
+	shell_exec("/var/www/ssl/anbada.sh $client $action $device $sort_of_backup");
 }
 redirect("https://anbada/");
 ?>
