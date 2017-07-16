@@ -27,8 +27,20 @@ function restore() {
 }
 
 function sync() {
-	mkdir oooohjjee
-	exit 0
+	serial="$1"
+	device_storage="/var/www/ssl/syncs/$serial"
+	sudo mkdir -p "$device_storage"
+	dirs=""
+
+	if [ "$2" = "all:yes" ]; then
+		dirs=$(sudo adb -s "$serial" wait-for-device ls /sdcard | cut -d ' ' -f4 | tail -n +3)
+	elif [ "$3" = "simples:yes" ]; then
+		dirs="DCIM Documents Download" 
+	fi
+
+	for dir in $dirs; do
+		sudo adb-sync --reverse "/sdcard/$dir" "$device_storage"
+	done
 }
 
 function add_ssid() {
