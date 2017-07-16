@@ -60,10 +60,10 @@
 			<p>connected device(s):<p>
 			<?php include("/tmp/anbada/devices"); ?>
 			<br>
-			<label><input type="checkbox" name="all_data"</input>all data?</label>
 			<br>
-			<label><input type="checkbox" name="photos_videos"</input>only photos/videos?</label>
-			<br>
+			<input type="radio" name="sort_of_backup" value="all"/> all?
+			<br>		
+			<input type="radio" name="sort_of_backup" value="simple"/> simple?
 			<br>
 			<input type="submit" class="button" name="action" value="sync"></input>
 		</form>
