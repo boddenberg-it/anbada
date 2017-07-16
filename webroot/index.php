@@ -57,7 +57,7 @@
           <div class="starter-template">
 
             <p>Welcone to Anbada</p>
-
+            <p><?php include("/tmp/anbada/diskusage"); ?></p>
 </div>
 </div><!-- /.container -->
 <!-- Bootstrap core JavaScript
