@@ -19,7 +19,7 @@ function backup() {
 	fi
 
 	mkdir -p "/var/www/html/backups_of/$serial/"
-	adb -s "$serial" wait-for-device backup "$flags -all" -f "/var/www/html/backups_of/$serial/$serial-$(date)"
+	sudo adb -s "$serial" wait-for-device backup "$flags -all" -f "/var/www/html/backups_of/$serial/$serial-$(date)"
 }
 
 function restore() {
