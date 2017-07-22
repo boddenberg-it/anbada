@@ -59,12 +59,14 @@
   <form action="anbada.php" method="post">
     <p>connected device(s):<p>
     <?php include("/tmp/anbada/devices"); ?>
-    <br>
+    <br><br>
     <label><input type="checkbox" name="apps"</input> apps?
     </label><br>
-    <label><input type="checkbox" name="storage"</input> storage?
+    <label><input type="checkbox" name="obb"</input> obb (app data)?
     </label><br>
     <label><input type="checkbox" name="system_apps"</input> system apps?
+    </label><br><br>
+    <label><input type="checkbox" name="storage"</input> storage? <br>(will take a lot longer)
     </label><br>
     <br>
     <input type="submit" class="button" name="action" value="backup"></input>

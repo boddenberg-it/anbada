@@ -11,15 +11,18 @@ function backup() {
 	if [ "$2" = "apps:on" ]; then
 		flags="-apk"
 	fi
-	if [ "$3" = "storage:on" ]; then
+	if [ "$3" = "obb:on" ]; then
+		flags="${flags} -obb"
+	fi
+	if [ "$4" = "storage:on" ]; then
 		flags="${flags} -shared"
 	fi
-	if [ "$4" = "system_apps:on" ]; then
+	if [ "$5" = "system_apps:on" ]; then
 		flags="${flags} -system"
 	fi
 
 	mkdir -p "/var/www/html/backups_of/$serial/"
-	sudo adb -s "$serial" wait-for-device backup "$flags -all" -f "/var/www/html/backups_of/$serial/$serial-$(date)"
+	adb -s "$serial" wait-for-device "backup" "$flags -all" -f "/var/www/html/backups_of/$serial/$serial-$(date)"
 }
 
 function restore() {
@@ -29,20 +32,20 @@ function restore() {
 function sync() {
 	serial="$1"
 	device_storage="/var/www/ssl/syncs/$serial"
-	sudo mkdir -p "$device_storage"
+	mkdir -p "$device_storage"
 	dirs=""
 
 	if [ "$2" = "all" ]; then
-		dirs=$(sudo adb -s "$serial" wait-for-device ls /sdcard | cut -d ' ' -f4 | tail -n +3)
+		dirs=$( adb -s "$serial" wait-for-device ls /sdcard | cut -d ' ' -f4 | tail -n +3)
 	elif [ "$2" = "simple" ]; then
 		dirs="DCIM Documents Download"
 	else
-		echo "error sync nothing passed" > anbada.log
+		echo "[ERROR] unknown flag $2 (all|simple)" > anbada.log
 		exit 1
 	fi
 
 	for dir in $dirs; do
-		sudo adb-sync -s "$serial" --reverse "/sdcard/$dir" "$device_storage"
+		 adb-sync -s "$serial" --reverse "/sdcard/$dir" "$device_storage"
 	done
 }
 
@@ -59,7 +62,7 @@ function refresh() {
 	serials=()
 	states=()
 
-	devices=$(sudo adb devices|awk '{if(NR>1)print}'|head -n -1)
+	devices=$( adb devices|awk '{if(NR>1)print}'|head -n -1)
 
 	for device in $devices; do
 		if [ $((counter %2)) -eq 0 ]; then

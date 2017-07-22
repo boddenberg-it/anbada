@@ -15,6 +15,7 @@ $client = $_SERVER['REMOTE_ADDR'];
 $action = $_POST['action'];
 $device = $_POST['device'];
 $apps = $_POST['apps'];
+$obb = $_POST['obb'];
 $storage = $_POST['storage'];
 $system_apps = $_POST['system_apps'];
 $ssid = $_POST['ssid'];
@@ -25,7 +26,7 @@ $sort_of_backup = $_POST['sort_of_backup'];
 // ensuring that shell functions only gets necessary information
 switch($action) {
 	case ("backup"):
-	shell_exec("/var/www/ssl/anbada.sh $client $action $device apps:$apps storage:$storage system_apps:$system_apps");
+	shell_exec("/var/www/ssl/anbada.sh $client $action $device apps:$apps obb:$obb storage:$storage system_apps:$system_apps");
   	break;
 
 	case ("add_ssid"):
@@ -39,5 +40,5 @@ switch($action) {
 	case ("sync"):
 	shell_exec("/var/www/ssl/anbada.sh $client $action $device $sort_of_backup");
 }
-redirect("https://anbada/");
+redirect("https://anbada/index.php");
 ?>
