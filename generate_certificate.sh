@@ -1,9 +1,13 @@
 #!/bin/sh
-mkdir -p /etc/lighttpd/ssl/anbada
-mkdir -p /etc/lighttpd/keys/
-openssl dhparam -out /etc/lighttpd/keys/dhparam.pem 4096
-openssl req -new -x509 -newkey rsa:4096 -days 365 -nodes \
-	-keyout /etc/lighttpd/ssl/anbada/server.pem \
-	-out /etc/lighttpd/ssl/anbada/server.pem
-chown www-data:www-data /etc/lighttpd/{ssl,keys} -R
-chmod 0600 -R /etc/lighttpd/{ssl,keys}
+
+mkdir -p /etc/lighttpd/certs
+cd /etc/lighttpd/certs
+rm lighttpd.pem || true
+openssl req -new -x509 -keyout lighttpd.pem -out lighttpd.pem -days 365 -nodes -subj '/CN=www.anbada.de/O=boddenberg.it/C=EU'
+chmod 400 lighttpd.pem
+
+#if [ "$password0" = "$password0" ]; then
+# sudo echo "$user:$password0" > /etc/lighttpd/.lighttpdpassword
+#else
+#again # generate password
+#fi
